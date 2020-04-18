@@ -101,6 +101,35 @@ public class GameManager : MonoBehaviour
         stairsDownAnim.Play("closeStairsDown");
         // activate enemies
         shooterHolder.ToggleFreezeAll(false);
+
+        if (level == 0) {
+            // intro sequence
+            ShowLevelIntroFirst(new string[]{
+                "Of course. Dad left the security system on again...",
+                "Good thing I have LEVITATRON 9000"
+            });
+        }
+        else if (level == 3) {
+            // first dynamic shooter
+        }
+        else if (level == 1000) {
+            // first laser shooter
+        }
+    }
+
+    void ShowLevelIntroFirst(string[] textQueue)
+    {
+        string[] portraitQueue = new string[textQueue.Length];
+        for (int i = 0; i < textQueue.Length; i++) portraitQueue[i] = "player";
+        ShowLevelIntroFirst(textQueue,portraitQueue);
+    }
+
+    void ShowLevelIntroFirst(string[] textQueue, string[] portraitQueue)
+    {
+        playingLevel = false;
+        textPanel.SetTextQueue(textQueue,portraitQueue);
+        player.ToggleFreezeMovement(true);
+        shooterHolder.ToggleFreezeAll(true);
     }
 
     IEnumerator DelayedAfterLevelTransition(float delay)
@@ -128,7 +157,9 @@ public class GameManager : MonoBehaviour
     public void TryAgain()
     {
         gameOverPanel.SetActive(false);
-        StartGame();
+        // StartGame();
+        level--;
+        EnterLevel();
     }
     
     // called at the very start, or when clicking "try again"
@@ -138,13 +169,6 @@ public class GameManager : MonoBehaviour
         bulletHolder.DestroyAll();
         level = 0;
         CompleteLevelSetup();
-        playingLevel = false;
-        textPanel.SetTextQueue(new string[]{
-            "Of course. Dad left the security system on again...",
-            "Good thing I have LEVITATRON 9000"
-        });
-        player.ToggleFreezeMovement(true);
-        shooterHolder.ToggleFreezeAll(true);
     }
 
     public void GameOver()
