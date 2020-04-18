@@ -20,6 +20,13 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag.Equals("playerbullet")) {
+            DestroyBullet();
+        }
+    }
+
     public void DestroyBullet()
     {
         Destroy(this.gameObject);

@@ -31,6 +31,7 @@ public class Shooter : MonoBehaviour
     public void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab,Vector3.zero,Quaternion.identity,FindObjectOfType<BulletHolder>().transform);
+        bullet.transform.position = transform.position;
         Vector3 direction = (target.transform.position - transform.position).normalized;
         bullet.GetComponent<Rigidbody2D>().velocity = direction * shootSpeed;
     }

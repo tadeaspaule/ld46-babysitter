@@ -6,6 +6,7 @@ TagManager:
   tags:
   - wallground
   - bullet
+  - playerbullet
   layers:
   - Default
   - TransparentFX

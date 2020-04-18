@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         carrier.transform.position = new Vector3(-5f,-5f,0f);
         // reset enemies
-        shooterHolder.DestroyAll();
+        // shooterHolder.DestroyAll(); TODO uncomment
     }
 
     IEnumerator AfterLevelTransition(float delay)
