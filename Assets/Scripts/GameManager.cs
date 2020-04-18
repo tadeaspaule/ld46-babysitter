@@ -124,7 +124,6 @@ public class GameManager : MonoBehaviour
 
     public Animation canvasAnim;
     public GameObject gameOverPanel;
-    float textDelay = 5f;
     
     public void TryAgain()
     {

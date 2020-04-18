@@ -9,19 +9,12 @@ public class Player : MonoBehaviour
     float moveSpeed = 7f;
     bool freezeMovement = false;
 
-    public GameObject bulletPrefab;
-    Vector3 shotOffset = new Vector3(0f,1f,0f);
-    float shootSpeed = 15f;
-    float shotTimer = 0f;
-    float shotDelay = 0.2f;
-
     float floatRadians = 0f;
     float floatSpeed = 2f;
     float floatHeight = 0.08f;
     float floatBaseY = 0.2f;
 
     float levitateSpeed = 15f;
-    float levitateMaxSpeed = 20f;
     public Rigidbody2D levitatedObject;
 
     // Update is called once per frame
@@ -50,20 +43,6 @@ public class Player : MonoBehaviour
         else if (movement.x < 0f) {
             transform.rotation = Quaternion.Euler(0f,180f,0f);
         }
-
-
-
-        // shooting
-        // shotTimer += Time.deltaTime;
-        // if (Input.GetMouseButton(0) && shotTimer > shotDelay) {
-        //     shotTimer = 0f;
-        //     Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - (transform.position + shotOffset));
-        //     direction = new Vector3(direction.x,direction.y,0f);
-        //     direction = direction.normalized;
-        //     GameObject bullet = Instantiate(bulletPrefab,Vector3.zero,Quaternion.identity,FindObjectOfType<BulletHolder>().transform);
-        //     bullet.transform.position = transform.position + shotOffset;
-        //     bullet.GetComponent<PlayerBullet>().SetVelocity(direction * shootSpeed);
-        // }
 
         // levitating a weapon
         Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - levitatedObject.transform.position);
