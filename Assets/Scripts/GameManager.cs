@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -186,7 +187,7 @@ public class GameManager : MonoBehaviour
     {
         shooterHolder.DestroyAll();
         bulletHolder.DestroyAll();
-        level = 6;
+        level = 8;
         CompleteLevelSetup();
     }
 
@@ -207,10 +208,27 @@ public class GameManager : MonoBehaviour
 
     public void TextQueueEnded()
     {
-        player.ToggleFreezeMovement(false);
-        shooterHolder.ToggleFreezeAll(false);
-        playingLevel = true;
+        if (level < levels.Length) {
+            player.ToggleFreezeMovement(false);
+            shooterHolder.ToggleFreezeAll(false);
+            playingLevel = true;
+        }
+        else {
+            // last text in the game ended
+            canvasAnim.Play("showCredits");
+        }
     }
+
     #endregion
+
+    public void ClickedMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
+
+    public void ClickedQuit()
+    {
+        Application.Quit();
+    }
 
 }
