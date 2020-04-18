@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e4c1f23faf0a01240ae9107433b18848, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -136,7 +136,7 @@ PrefabInstance:
     - target: {fileID: 2988456416687027692, guid: b698d42b2a6606d4c8e5f0635745b6ee,
         type: 3}
       propertyPath: m_Name
-      value: laserPrefab Variant
+      value: laserShooter
       objectReference: {fileID: 0}
     - target: {fileID: 2988456416687027691, guid: b698d42b2a6606d4c8e5f0635745b6ee,
         type: 3}

@@ -111,9 +111,15 @@ public class GameManager : MonoBehaviour
         }
         else if (level == 3) {
             // first dynamic shooter
+            ShowLevelIntroFirst(new string[]{
+                "That thing can track my movement"
+            });
         }
-        else if (level == 1000) {
+        else if (level == 6) {
             // first laser shooter
+            ShowLevelIntroFirst(new string[]{
+                "Damn, I'll have to watch out for that laser..."
+            });
         }
     }
 
