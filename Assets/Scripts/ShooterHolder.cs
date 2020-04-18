@@ -7,7 +7,7 @@ public class ShooterHolder : MonoBehaviour
     public void ToggleFreezeAll(bool value)
     {
         foreach (Transform shooter in transform) {
-            shooter.GetComponent<Shooter>().ToggleFreeze(value);
+            shooter.GetComponent<ShooterBase>().ToggleFreeze(value);
         }
     }
 

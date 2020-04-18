@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartGame();
-        ShowText("Damn! This is a test text and it shows!");
     }
 
     // Update is called once per frame
@@ -51,18 +50,23 @@ public class GameManager : MonoBehaviour
         stairsUp.enabled = false;
         levelTransitionAnim.Play("levelTransition");
         player.ToggleFreezeMovement(true);
-        CompleteLevelSetup(levelTransitionClip.averageDuration);
+        DelayedCompleteLevelSetup(levelTransitionClip.averageDuration);
     }
 
-    void CompleteLevelSetup(float delay)
+    void DelayedCompleteLevelSetup(float delay)
     {
-        StartCoroutine(SetupLevel(delay / 2));
-        StartCoroutine(AfterLevelTransition(delay));
+        StartCoroutine(DelayedSetupLevel(delay / 2));
+        StartCoroutine(DelayedAfterLevelTransition(delay));
     }
 
-    IEnumerator SetupLevel(float delay)
+    void CompleteLevelSetup()
     {
-        yield return new WaitForSeconds(delay);
+        SetupLevel();
+        AfterLevelTransition();
+    }
+
+    void SetupLevel()
+    {
         carrier.transform.position = new Vector3(-5f,-5f,0f);
         player.Reset();
         openDoorsAnim.Play("resetDoors");
@@ -82,9 +86,14 @@ public class GameManager : MonoBehaviour
         stairsDownAnim.Play("openStairsDown");
     }
 
-    IEnumerator AfterLevelTransition(float delay)
+    IEnumerator DelayedSetupLevel(float delay)
     {
         yield return new WaitForSeconds(delay);
+        SetupLevel();
+    }
+
+    void AfterLevelTransition()
+    {
         player.ToggleFreezeMovement(false);
         shooterHolder.ToggleFreezeAll(false);
         playingLevel = true;
@@ -92,6 +101,12 @@ public class GameManager : MonoBehaviour
         stairsDownAnim.Play("closeStairsDown");
         // activate enemies
         shooterHolder.ToggleFreezeAll(false);
+    }
+
+    IEnumerator DelayedAfterLevelTransition(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        AfterLevelTransition();
     }
 
     #endregion
@@ -109,6 +124,7 @@ public class GameManager : MonoBehaviour
 
     public Animation canvasAnim;
     public GameObject gameOverPanel;
+    float textDelay = 5f;
     
     public void TryAgain()
     {
@@ -122,7 +138,20 @@ public class GameManager : MonoBehaviour
         shooterHolder.DestroyAll();
         bulletHolder.DestroyAll();
         level = 0;
-        CompleteLevelSetup(0f);
+        CompleteLevelSetup();
+        ShowText("Damn! This is a test text and it shows!");
+        player.ToggleFreezeMovement(true);
+        shooterHolder.ToggleFreezeAll(true);
+        Debug.Log("1");
+        StartCoroutine(DelayedUnfreezeAll());
+    }
+
+    IEnumerator DelayedUnfreezeAll()
+    {
+        yield return new WaitForSeconds(textDelay);
+        player.ToggleFreezeMovement(false);
+        shooterHolder.ToggleFreezeAll(false);
+        Debug.Log("2");
     }
 
     public void GameOver()
@@ -150,7 +179,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator DelayedHideTextPanel()
     {
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(textDelay);
         textPopupAnim.Play("hideTextPanel");
     }
 

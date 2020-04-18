@@ -81,6 +81,6 @@ public class Player : MonoBehaviour
     public void Reset()
     {
         levitatedObject.velocity = Vector2.zero;
-        levitatedObject.transform.position = Vector3.zero;
+        levitatedObject.transform.position = new Vector3(-5.5f,-3f,0f);
     }
 }
