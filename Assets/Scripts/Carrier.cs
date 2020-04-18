@@ -26,6 +26,9 @@ public class Carrier : MonoBehaviour
         else if (other.gameObject.name.Equals("officeDoors")) {
             FindObjectOfType<MenuManager>().EnteredOffice();
         }
+        else if (other.gameObject.tag.Equals("bullet")) {
+            gameManager.GameOver();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
