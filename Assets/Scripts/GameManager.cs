@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public Animation levelTransitionAnim;
     public AnimationClip levelTransitionClip;
+    public Animation openDoorsAnim;
     int level = 0;
     float levelTimer = 0f;
     float levelTimerMax = 5f;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("stairs open");
         stairsUp.enabled = true;
+        openDoorsAnim.Play("openDoors");
     }
 
     public void EnterLevel()
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         carrier.transform.position = new Vector3(-5f,-5f,0f);
         player.Reset();
+        openDoorsAnim.Play("resetDoors");
         // reset enemies
         shooterHolder.DestroyAll();
         bulletHolder.DestroyAll();
