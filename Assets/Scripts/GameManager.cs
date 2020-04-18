@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartGame();
+        ShowText("Damn! This is a test text and it shows!");
     }
 
     // Update is called once per frame
@@ -126,6 +128,26 @@ public class GameManager : MonoBehaviour
         bulletHolder.FreezeAll();
         canvasAnim.Play("gameOver");
 
+    }
+
+    #endregion
+
+    #region Text stuff
+
+    public TextMeshProUGUI popupText;
+    public Animation textPopupAnim;
+
+    public void ShowText(string text)
+    {
+        popupText.text = text;
+        textPopupAnim.Play("showTextPanel");
+        StartCoroutine(DelayedHideTextPanel());
+    }
+
+    IEnumerator DelayedHideTextPanel()
+    {
+        yield return new WaitForSeconds(7f);
+        textPopupAnim.Play("hideTextPanel");
     }
 
     #endregion
