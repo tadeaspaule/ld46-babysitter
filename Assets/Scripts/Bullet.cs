@@ -25,6 +25,11 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag.Equals("playerbullet")) {
             DestroyBullet();
         }
+        else if (other.gameObject.name.Equals("carrier")) {
+            // Game over
+            FindObjectOfType<GameManager>().GameOver();
+            // DestroyBullet();
+        }
     }
 
     public void DestroyBullet()
