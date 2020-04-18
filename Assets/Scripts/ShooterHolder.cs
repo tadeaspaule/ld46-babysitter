@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ShooterHolder : MonoBehaviour
 {
-    public void FreezeAll()
+    public void ToggleFreezeAll(bool value)
     {
         foreach (Transform shooter in transform) {
-            shooter.GetComponent<Shooter>().ToggleFreeze(true);
+            shooter.GetComponent<Shooter>().ToggleFreeze(value);
         }
     }
 

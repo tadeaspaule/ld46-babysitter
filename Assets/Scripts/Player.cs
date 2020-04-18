@@ -20,6 +20,10 @@ public class Player : MonoBehaviour
     float floatHeight = 0.08f;
     float floatBaseY = 0.2f;
 
+    float levitateSpeed = 15f;
+    float levitateMaxSpeed = 20f;
+    public Rigidbody2D levitatedObject;
+
     // Update is called once per frame
     void Update()
     {
@@ -49,21 +53,34 @@ public class Player : MonoBehaviour
 
 
         // shooting
-        shotTimer += Time.deltaTime;
-        if (Input.GetMouseButton(0) && shotTimer > shotDelay) {
-            shotTimer = 0f;
-            Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - (transform.position + shotOffset));
-            direction = new Vector3(direction.x,direction.y,0f);
-            direction = direction.normalized;
-            Debug.Log(direction.normalized);
-            GameObject bullet = Instantiate(bulletPrefab,Vector3.zero,Quaternion.identity,FindObjectOfType<BulletHolder>().transform);
-            bullet.transform.position = transform.position + shotOffset;
-            bullet.GetComponent<PlayerBullet>().SetVelocity(direction * shootSpeed);
-        }
+        // shotTimer += Time.deltaTime;
+        // if (Input.GetMouseButton(0) && shotTimer > shotDelay) {
+        //     shotTimer = 0f;
+        //     Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - (transform.position + shotOffset));
+        //     direction = new Vector3(direction.x,direction.y,0f);
+        //     direction = direction.normalized;
+        //     GameObject bullet = Instantiate(bulletPrefab,Vector3.zero,Quaternion.identity,FindObjectOfType<BulletHolder>().transform);
+        //     bullet.transform.position = transform.position + shotOffset;
+        //     bullet.GetComponent<PlayerBullet>().SetVelocity(direction * shootSpeed);
+        // }
+
+        // levitating a weapon
+        Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - levitatedObject.transform.position);
+        direction = new Vector3(direction.x,direction.y,0f);
+        if (direction.magnitude > 1f) direction = direction.normalized;
+        levitatedObject.velocity = direction * levitateSpeed;
+
     }
 
     public void ToggleFreezeMovement(bool value)
     {
         freezeMovement = value;
+        levitatedObject.velocity = Vector2.zero;
+    }
+
+    public void Reset()
+    {
+        levitatedObject.velocity = Vector2.zero;
+        levitatedObject.transform.position = Vector3.zero;
     }
 }

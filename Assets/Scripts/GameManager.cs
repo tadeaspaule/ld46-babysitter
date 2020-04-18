@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         carrier.transform.position = new Vector3(-5f,-5f,0f);
+        player.Reset();
         // reset enemies
         // shooterHolder.DestroyAll(); TODO uncomment
     }
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         player.ToggleFreezeMovement(false);
+        shooterHolder.ToggleFreezeAll(false);
         // activate enemies
     }
 
@@ -82,7 +84,7 @@ public class GameManager : MonoBehaviour
     // called at the very start, or when clicking "try again"
     public void StartGame()
     {
-        shooterHolder.DestroyAll();
+        // shooterHolder.DestroyAll();
         bulletHolder.DestroyAll();
         level = 0;
         CompleteLevelSetup(0f);
@@ -91,7 +93,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("over");
-        shooterHolder.FreezeAll();
+        shooterHolder.ToggleFreezeAll(true);
         bulletHolder.FreezeAll();
         canvasAnim.Play("gameOver");
 
