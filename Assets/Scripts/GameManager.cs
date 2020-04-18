@@ -183,6 +183,10 @@ public class GameManager : MonoBehaviour
         textPopupAnim.Play("hideTextPanel");
     }
 
+    public void TextQueueEnded()
+    {
+
+    }
     #endregion
 
 }
