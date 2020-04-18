@@ -23,6 +23,9 @@ public class Carrier : MonoBehaviour
         if (other.gameObject.name.Equals("stairs-up")) {
             gameManager.EnterLevel();
         }
+        else if (other.gameObject.name.Equals("officeDoors")) {
+            FindObjectOfType<MenuManager>().EnteredOffice();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)

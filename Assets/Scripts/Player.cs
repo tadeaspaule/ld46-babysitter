@@ -27,6 +27,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // floating
+        floatRadians += Time.deltaTime * floatSpeed;
+        if (floatRadians > Mathf.PI * 2) floatRadians -= Mathf.PI * 2;
+        transform.localPosition = new Vector3(transform.localPosition.x,floatBaseY + Mathf.Sin(floatRadians)*floatHeight,transform.localPosition.z);
+
         if (freezeMovement) return;
         // movement
         Vector3 movement = Vector3.zero;
@@ -46,10 +51,6 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f,180f,0f);
         }
 
-        // floating
-        floatRadians += Time.deltaTime * floatSpeed;
-        if (floatRadians > Mathf.PI * 2) floatRadians -= Mathf.PI * 2;
-        transform.localPosition = new Vector3(transform.localPosition.x,floatBaseY + Mathf.Sin(floatRadians)*floatHeight,transform.localPosition.z);
 
 
         // shooting
