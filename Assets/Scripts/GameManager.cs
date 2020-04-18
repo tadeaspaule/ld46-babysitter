@@ -6,10 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public BoxCollider2D stairsUp;
     public Player player;
-    public Animation levelTransitionAnim;
-    public AnimationClip levelTransitionClip;
 
-    int level = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -22,6 +19,12 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    #region Level stuff
+
+    public Animation levelTransitionAnim;
+    public AnimationClip levelTransitionClip;
+    int level = 0;
 
     public void EnterLevel()
     {
@@ -46,4 +49,45 @@ public class GameManager : MonoBehaviour
         player.ToggleFreezeMovement(false);
         // activate enemies
     }
+
+    #endregion
+
+    #region Enemy stuff
+    
+    public ShooterHolder shooterHolder;
+    public BulletHolder bulletHolder;
+    
+    
+
+    #endregion
+
+    #region Game stuff
+
+    public Animation canvasAnim;
+    public GameObject gameOverPanel;
+    
+    public void TryAgain()
+    {
+        gameOverPanel.SetActive(false);
+        StartGame();
+    }
+    
+    // called at the very start, or when clicking "try again"
+    public void StartGame()
+    {
+        shooterHolder.DestroyAll();
+        bulletHolder.DestroyAll();
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("over");
+        shooterHolder.FreezeAll();
+        bulletHolder.FreezeAll();
+        canvasAnim.Play("gameOver");
+
+    }
+
+    #endregion
+
 }

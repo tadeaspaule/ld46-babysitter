@@ -24,4 +24,12 @@ public class Carrier : MonoBehaviour
             gameManager.EnterLevel();
         }
     }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log("1");
+        if (other.gameObject.tag.Equals("bullet")) {
+            gameManager.GameOver();
+        }
+    }
 }
