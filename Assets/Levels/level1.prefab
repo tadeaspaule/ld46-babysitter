@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &7936675398457754617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5142439516064577047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab3a2f44b18c8a84f9d75d3ea38aa39e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1682540337793083593, guid: a21e2bd4eff6aa141a9c075bc3880b3d,
+    type: 3}
+  timer: 0.8
+  shootFrequency: 1
+  shootSpeed: 6
+  shootDirection: {x: 0, y: -1}
 --- !u!1 &7936675398083456138
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +29,7 @@ GameObject:
   - component: {fileID: 7936675398083456136}
   - component: {fileID: 7936675398083456139}
   m_Layer: 0
-  m_Name: shooterHolder 5
+  m_Name: level1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,24 +62,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091fae1f749fb32489d0bb573d9b29db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7936675398457754617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5142439516064577047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab3a2f44b18c8a84f9d75d3ea38aa39e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1682540337793083593, guid: a21e2bd4eff6aa141a9c075bc3880b3d,
-    type: 3}
-  timer: 0
-  shootFrequency: 1
-  shootSpeed: 6
-  shootDirection: {x: 0, y: -1}
 --- !u!1001 &7936675398457754619
 PrefabInstance:
   m_ObjectHideFlags: 0
