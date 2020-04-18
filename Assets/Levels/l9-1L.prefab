@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6020001640306272301}
   - component: {fileID: 6020001640306272302}
   m_Layer: 0
-  m_Name: shooterHolder
+  m_Name: l9-1L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,6 +110,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 992377118, guid: 6d0795a026578204b8564e6082f6cdb8, type: 3}
+      propertyPath: timer
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d0795a026578204b8564e6082f6cdb8, type: 3}

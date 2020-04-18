@@ -126,7 +126,7 @@ MonoBehaviour:
   - {fileID: 9069920526564852908, guid: 6b74c294ede53e2418d32747a0f9d7ab, type: 3}
   bulletPrefab: {fileID: 0}
   timer: 0
-  shootFrequency: 5
+  shootFrequency: 2.5
   shootSpeed: 6
   laserSR: {fileID: 1465433247}
   laserBox2D: {fileID: 1465433246}
