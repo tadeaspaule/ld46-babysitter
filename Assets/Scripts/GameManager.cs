@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public Animation levelTransitionAnim;
     public AnimationClip levelTransitionClip;
     public Animation openDoorsAnim;
+    public Animation stairsDownAnim;
     int level = 0;
     float levelTimer = 0f;
     float levelTimerMax = 5f;
@@ -77,6 +78,8 @@ public class GameManager : MonoBehaviour
             shooterHolder = currentLevel.GetComponent<ShooterHolder>();
             shooterHolder.ToggleFreezeAll(true);
         }
+        // reset UI
+        stairsDownAnim.Play("openStairsDown");
     }
 
     IEnumerator AfterLevelTransition(float delay)
@@ -86,6 +89,7 @@ public class GameManager : MonoBehaviour
         shooterHolder.ToggleFreezeAll(false);
         playingLevel = true;
         levelTimer = 0f;
+        stairsDownAnim.Play("closeStairsDown");
         // activate enemies
         shooterHolder.ToggleFreezeAll(false);
     }
