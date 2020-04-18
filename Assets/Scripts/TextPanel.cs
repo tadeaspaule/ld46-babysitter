@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class TextPanel : MonoBehaviour
 {
     public TextMeshProUGUI text;
     public Animation panelAnim;
+    public Image image;
 
     string[] textQueue;
+    Sprite[] portraitQueue;
     int index = 0;
     int currentTextIndex;
     float charDelay = 0.1f;
@@ -26,6 +29,7 @@ public class TextPanel : MonoBehaviour
     void WriteCurrentText()
     {
         currentTextIndex = 0;
+        image.sprite = portraitQueue[index];
         text.text = "";
         writingText = true;
         StartCoroutine(WriteTextChar());
@@ -44,12 +48,21 @@ public class TextPanel : MonoBehaviour
         }
     }
 
-    public void SetTextQueue(string[] queue)
+    public void SetTextQueue(string[] queue, string[] portraits)
     {
         panelAnim.Play("showTextPanel");
         textQueue = queue;
+        portraitQueue = new Sprite[portraits.Length];
+        for (int i = 0; i < portraits.Length; i++) portraitQueue[i] = GetPortrait(portraits[i]);
         index = 0;
         WriteCurrentText();
+    }
+
+    public void SetTextQueue(string[] queue)
+    {
+        string[] portraits = new string[queue.Length];
+        for (int i = 0; i < queue.Length; i++) portraits[i] = "player";
+        SetTextQueue(queue,portraits);
     }
 
     public void Skip()
@@ -80,4 +93,21 @@ public class TextPanel : MonoBehaviour
         if (menuManager != null) menuManager.TextQueueEnded();
         if (gameManager != null) gameManager.TextQueueEnded();
     }
+
+    [System.Serializable]
+    public class NamePortraitPair
+    {
+        public string name;
+        public Sprite portrait;
+    }
+    public NamePortraitPair[] portraits;
+
+    Sprite GetPortrait(string name)
+    {
+        foreach (NamePortraitPair pair in portraits) {
+            if (pair.name.Equals(name)) return pair.portrait;
+        }
+        return null;
+    }
+
 }
