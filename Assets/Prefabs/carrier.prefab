@@ -96,8 +96,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   rb: {fileID: 248316193660111485}
-  bulletPrefab: {fileID: 405590976095642727, guid: 469d0dc9dcac4bb4b99533a670451a8d,
-    type: 3}
   levitatedObject: {fileID: 0}
 --- !u!61 &248316193202115903
 BoxCollider2D:
