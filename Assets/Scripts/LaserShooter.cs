@@ -9,14 +9,32 @@ public class LaserShooter : ShooterBase
     public float shootDelay = 0.6f;
     float laserDuration = 0.1f;
 
-    Color hiddenLaser = new Color(1f,1f,1f,0f);
-    Color visibleLaser = new Color(1f,1f,1f,1f);
-    Color warningLaser = new Color(1f,1f,1f,0.3f);
+    float hiddenLaser = 0f;
+    float visibleLaser = 1f;
+    float warningLaser = 0.3f;
     Carrier target;
 
     void Start()
     {
         target = FindObjectOfType<Carrier>();
+    }
+
+    void Update()
+    {
+        BaseUpdate();
+        float dif = Mathf.Abs(target.transform.position.x - transform.position.x);
+        if (target.transform.position.x > transform.position.x && dif > 2f) {
+            // look right
+            spriteRenderer.sprite = sprites[1];
+        }
+        else if (target.transform.position.x < transform.position.x && dif > 2f) {
+            // look left
+            spriteRenderer.sprite = sprites[2];
+        }
+        else {
+            // default look
+            spriteRenderer.sprite = sprites[0];
+        }
     }
     
     
@@ -25,16 +43,16 @@ public class LaserShooter : ShooterBase
         Vector3 direction = (target.transform.position - transform.position).normalized;
         float rads = Mathf.Acos(direction.x);
         if (direction.y < 0f) rads = Mathf.PI - rads;
-        rads -= Mathf.PI / 2;
-        transform.rotation = Quaternion.Euler(0f,0f,180f * (rads / Mathf.PI));
-        laserSR.color = warningLaser;
+        rads += Mathf.PI / 2;
+        laserSR.transform.rotation = Quaternion.Euler(0f,0f,180f * (rads / Mathf.PI));
+        SetAlpha(warningLaser);
         StartCoroutine(DelayedShot());
     }
 
     IEnumerator DelayedShot()
     {
         yield return new WaitForSeconds(shootDelay);
-        laserSR.color = visibleLaser;
+        SetAlpha(visibleLaser);
         laserBox2D.enabled = true;
         StartCoroutine(DelayedHideLaser());
     }
@@ -42,7 +60,12 @@ public class LaserShooter : ShooterBase
     IEnumerator DelayedHideLaser()
     {
         yield return new WaitForSeconds(laserDuration);
-        laserSR.color = hiddenLaser;
+        SetAlpha(hiddenLaser);
         laserBox2D.enabled = false;
+    }
+
+    void SetAlpha(float alpha)
+    {        
+        laserSR.color = new Color(laserSR.color.r,laserSR.color.g,laserSR.color.b,alpha);
     }
 }

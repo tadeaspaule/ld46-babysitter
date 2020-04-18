@@ -44,6 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619ef4bbcda3a884bb3556bfba0c34f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 139518951376235450}
+  sprites:
+  - {fileID: -2539944393684379776, guid: 9e12d97effcb17b4aaa5d95171d4a38e, type: 3}
+  - {fileID: -5470719208287446694, guid: 9e12d97effcb17b4aaa5d95171d4a38e, type: 3}
+  - {fileID: 1402396209288535529, guid: 9e12d97effcb17b4aaa5d95171d4a38e, type: 3}
   bulletPrefab: {fileID: 1682540337793083593, guid: a21e2bd4eff6aa141a9c075bc3880b3d,
     type: 3}
   timer: 0
@@ -87,8 +92,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8dc360ff70b687a4e814a268e558768b, type: 3}
-  m_Color: {r: 1, g: 0.07075471, b: 0.07075471, a: 1}
+  m_Sprite: {fileID: -2539944393684379776, guid: 9e12d97effcb17b4aaa5d95171d4a38e,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

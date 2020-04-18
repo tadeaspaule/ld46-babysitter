@@ -12,6 +12,24 @@ public class Shooter : ShooterBase
         target = FindObjectOfType<Carrier>();
     }
 
+    void Update()
+    {
+        BaseUpdate();
+        float dif = Mathf.Abs(target.transform.position.x - transform.position.x);
+        if (target.transform.position.x > transform.position.x && dif > 2f) {
+            // look right
+            spriteRenderer.sprite = sprites[1];
+        }
+        else if (target.transform.position.x < transform.position.x && dif > 2f) {
+            // look left
+            spriteRenderer.sprite = sprites[2];
+        }
+        else {
+            // default look
+            spriteRenderer.sprite = sprites[0];
+        }
+    }
+
     public override void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab,Vector3.zero,Quaternion.identity,FindObjectOfType<BulletHolder>().transform);
