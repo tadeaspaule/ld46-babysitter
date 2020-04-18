@@ -15,11 +15,16 @@ public class Player : MonoBehaviour
     float shotTimer = 0f;
     float shotDelay = 0.2f;
 
+    float floatRadians = 0f;
+    float floatSpeed = 2f;
+    float floatHeight = 0.08f;
+    float floatBaseY = 0.2f;
 
     // Update is called once per frame
     void Update()
     {
         if (freezeMovement) return;
+        // movement
         Vector3 movement = Vector3.zero;
         if (Input.GetKey(KeyCode.A)) {
             movement += Vector3.left;
@@ -29,6 +34,21 @@ public class Player : MonoBehaviour
         }
         rb.velocity = movement * moveSpeed;
 
+        // rotation
+        if (movement.x > 0f) {
+            transform.rotation = Quaternion.Euler(0f,0f,0f);
+        }
+        else if (movement.x < 0f) {
+            transform.rotation = Quaternion.Euler(0f,180f,0f);
+        }
+
+        // floating
+        floatRadians += Time.deltaTime * floatSpeed;
+        if (floatRadians > Mathf.PI * 2) floatRadians -= Mathf.PI * 2;
+        transform.localPosition = new Vector3(transform.localPosition.x,floatBaseY + Mathf.Sin(floatRadians)*floatHeight,transform.localPosition.z);
+
+
+        // shooting
         shotTimer += Time.deltaTime;
         if (Input.GetMouseButton(0) && shotTimer > shotDelay) {
             shotTimer = 0f;
@@ -39,7 +59,6 @@ public class Player : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab,Vector3.zero,Quaternion.identity,FindObjectOfType<BulletHolder>().transform);
             bullet.transform.position = transform.position + shotOffset;
             bullet.GetComponent<PlayerBullet>().SetVelocity(direction * shootSpeed);
-
         }
     }
 
