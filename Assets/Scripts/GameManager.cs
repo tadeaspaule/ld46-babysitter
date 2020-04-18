@@ -8,17 +8,19 @@ public class GameManager : MonoBehaviour
     public Player player;
     public Carrier carrier;
 
-    
-    // Start is called before the first frame update
     void Start()
     {
-        
+        StartGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (playingLevel) levelTimer += Time.deltaTime;
+        if (playingLevel && levelTimer > levelTimerMax) {
+            playingLevel = false;
+            OpensStairsUp();
+        }
     }
 
     #region Level stuff
@@ -26,6 +28,17 @@ public class GameManager : MonoBehaviour
     public Animation levelTransitionAnim;
     public AnimationClip levelTransitionClip;
     int level = 0;
+    float levelTimer = 0f;
+    float levelTimerMax = 5f;
+    bool playingLevel = true;
+
+    public GameObject[] levels;
+
+    void OpensStairsUp()
+    {
+        Debug.Log("stairs open");
+        stairsUp.enabled = true;
+    }
 
     public void EnterLevel()
     {
@@ -48,7 +61,17 @@ public class GameManager : MonoBehaviour
         carrier.transform.position = new Vector3(-5f,-5f,0f);
         player.Reset();
         // reset enemies
-        // shooterHolder.DestroyAll(); TODO uncomment
+        shooterHolder.DestroyAll();
+        bulletHolder.DestroyAll();
+        if (level >= levels.Length) {
+            // on final floor with daddy, just end of game stuff
+            stairsUp.gameObject.SetActive(false);
+        }
+        else {
+            GameObject currentLevel = Instantiate(levels[level],Vector3.zero,Quaternion.identity);
+            shooterHolder = currentLevel.GetComponent<ShooterHolder>();
+            shooterHolder.ToggleFreezeAll(true);
+        }
     }
 
     IEnumerator AfterLevelTransition(float delay)
@@ -56,7 +79,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         player.ToggleFreezeMovement(false);
         shooterHolder.ToggleFreezeAll(false);
+        playingLevel = true;
+        levelTimer = 0f;
         // activate enemies
+        shooterHolder.ToggleFreezeAll(false);
     }
 
     #endregion
@@ -84,7 +110,7 @@ public class GameManager : MonoBehaviour
     // called at the very start, or when clicking "try again"
     public void StartGame()
     {
-        // shooterHolder.DestroyAll();
+        shooterHolder.DestroyAll();
         bulletHolder.DestroyAll();
         level = 0;
         CompleteLevelSetup(0f);
