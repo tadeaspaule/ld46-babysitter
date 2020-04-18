@@ -5,15 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameManager gameManager;
+    public Rigidbody2D rb;
     float moveSpeed = 7f;
-    Rigidbody2D rb;
     bool freezeMovement = false;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
 
     // Update is called once per frame
     void Update()

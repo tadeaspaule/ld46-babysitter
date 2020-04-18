@@ -13,11 +13,11 @@ public class Bullet : MonoBehaviour
         //     // TODO maybe some cool effect
         //     DestroyBullet();
         // }
-        // else if (other.gameObject.name.Equals("carrier")) {
-        //     // Game over
-        //     FindObjectOfType<GameManager>().GameOver();
-        //     // DestroyBullet();
-        // }
+        else if (other.gameObject.name.Equals("carrier")) {
+            // Game over
+            FindObjectOfType<GameManager>().GameOver();
+            // DestroyBullet();
+        }
     }
 
     public void DestroyBullet()

@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public BoxCollider2D stairsUp;
     public Player player;
+    public Carrier carrier;
 
     
     // Start is called before the first frame update
@@ -29,23 +30,29 @@ public class GameManager : MonoBehaviour
     public void EnterLevel()
     {
         level++;
-        // stairsUp.enabled = false;
+        stairsUp.enabled = false;
         levelTransitionAnim.Play("levelTransition");
         player.ToggleFreezeMovement(true);
-        StartCoroutine(SetupLevel());
-        StartCoroutine(AfterLevelTransition());
+        CompleteLevelSetup(levelTransitionClip.averageDuration);
     }
 
-    IEnumerator SetupLevel()
+    void CompleteLevelSetup(float delay)
     {
-        yield return new WaitForSeconds(levelTransitionClip.averageDuration / 2);
-        player.transform.position = new Vector3(-6.5f,-5f,0f);
+        StartCoroutine(SetupLevel(delay / 2));
+        StartCoroutine(AfterLevelTransition(delay));
+    }
+
+    IEnumerator SetupLevel(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        carrier.transform.position = new Vector3(-5f,-5f,0f);
         // reset enemies
+        shooterHolder.DestroyAll();
     }
 
-    IEnumerator AfterLevelTransition()
+    IEnumerator AfterLevelTransition(float delay)
     {
-        yield return new WaitForSeconds(levelTransitionClip.averageDuration);
+        yield return new WaitForSeconds(delay);
         player.ToggleFreezeMovement(false);
         // activate enemies
     }
@@ -77,6 +84,8 @@ public class GameManager : MonoBehaviour
     {
         shooterHolder.DestroyAll();
         bulletHolder.DestroyAll();
+        level = 0;
+        CompleteLevelSetup(0f);
     }
 
     public void GameOver()
