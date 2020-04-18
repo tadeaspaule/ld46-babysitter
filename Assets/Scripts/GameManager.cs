@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public AnimationClip levelTransitionClip;
     public Animation openDoorsAnim;
     public Animation stairsDownAnim;
+    public GameObject dad;
     int level = 0;
     float levelTimer = 0f;
     float levelTimerMax = 5f;
@@ -76,6 +77,7 @@ public class GameManager : MonoBehaviour
         if (level >= levels.Length) {
             // on final floor with daddy, just end of game stuff
             stairsUp.gameObject.SetActive(false);
+            dad.SetActive(true);
         }
         else {
             GameObject currentLevel = Instantiate(levels[level],Vector3.zero,Quaternion.identity);
@@ -122,6 +124,15 @@ public class GameManager : MonoBehaviour
                 "D... Da? Dada? ... Dada!",
                 "Yes, yes, we're going to Dada."
             }, new string[]{"player","baby","player"});
+        }
+        else if (level == levels.Length) {
+            // end of game
+            ShowLevelIntroFirst(new string[]{
+                "dad zone line 1",
+                "D... Da? Dada? ... Dada!",
+                "yesyes"
+            }, new string[]{"player","baby","player"});
+
         }
     }
 
