@@ -118,8 +118,10 @@ public class GameManager : MonoBehaviour
         else if (level == 6) {
             // first laser shooter
             ShowLevelIntroFirst(new string[]{
-                "Damn, I'll have to watch out for that laser..."
-            });
+                "Typical dad, putting up lasers. Of course, I can just wait for the heat warning",
+                "D... Da? Dada? ... Dada!",
+                "Yes, yes, we're going to Dada."
+            }, new string[]{"player","baby","player"});
         }
     }
 
@@ -173,7 +175,7 @@ public class GameManager : MonoBehaviour
     {
         shooterHolder.DestroyAll();
         bulletHolder.DestroyAll();
-        level = 5;
+        level = 6;
         CompleteLevelSetup();
     }
 

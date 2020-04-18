@@ -271,7 +271,7 @@ MonoBehaviour:
   - name: player
     portrait: {fileID: 21300000, guid: 2e76b5d537f63f845b63f8ce87c689cd, type: 3}
   - name: baby
-    portrait: {fileID: 21300000, guid: 0155cce75a5336c4b98e4ca5b7e71e08, type: 3}
+    portrait: {fileID: 21300000, guid: a38c75d3837274748a70f81b862c0ca9, type: 3}
 --- !u!1 &4131544650809735310
 GameObject:
   m_ObjectHideFlags: 0

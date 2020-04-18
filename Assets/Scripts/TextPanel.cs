@@ -14,7 +14,7 @@ public class TextPanel : MonoBehaviour
     Sprite[] portraitQueue;
     int index = 0;
     int currentTextIndex;
-    float charDelay = 0.1f;
+    float charDelay = 0.03f;
     
     bool writingText;
 
