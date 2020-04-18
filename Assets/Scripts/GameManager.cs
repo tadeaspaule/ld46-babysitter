@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     int level = 0;
     float levelTimer = 0f;
     float levelTimerMax = 5f;
-    bool playingLevel = true;
+    bool playingLevel;
 
     public GameObject[] levels;
 
@@ -139,19 +139,13 @@ public class GameManager : MonoBehaviour
         bulletHolder.DestroyAll();
         level = 0;
         CompleteLevelSetup();
-        ShowText("Damn! This is a test text and it shows!");
+        playingLevel = false;
+        textPanel.SetTextQueue(new string[]{
+            "Of course. Dad left the security system on again...",
+            "Good thing I have LEVITATRON 9000"
+        });
         player.ToggleFreezeMovement(true);
         shooterHolder.ToggleFreezeAll(true);
-        Debug.Log("1");
-        StartCoroutine(DelayedUnfreezeAll());
-    }
-
-    IEnumerator DelayedUnfreezeAll()
-    {
-        yield return new WaitForSeconds(textDelay);
-        player.ToggleFreezeMovement(false);
-        shooterHolder.ToggleFreezeAll(false);
-        Debug.Log("2");
     }
 
     public void GameOver()
@@ -167,25 +161,13 @@ public class GameManager : MonoBehaviour
 
     #region Text stuff
 
-    public TextMeshProUGUI popupText;
-    public Animation textPopupAnim;
-
-    public void ShowText(string text)
-    {
-        popupText.text = text;
-        textPopupAnim.Play("showTextPanel");
-        StartCoroutine(DelayedHideTextPanel());
-    }
-
-    IEnumerator DelayedHideTextPanel()
-    {
-        yield return new WaitForSeconds(textDelay);
-        textPopupAnim.Play("hideTextPanel");
-    }
+    public TextPanel textPanel;
 
     public void TextQueueEnded()
     {
-
+        player.ToggleFreezeMovement(false);
+        shooterHolder.ToggleFreezeAll(false);
+        playingLevel = true;
     }
     #endregion
 

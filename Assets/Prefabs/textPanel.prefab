@@ -262,8 +262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8989f45c6f144b94fb10d24d9a77d242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
-  panelAnim: {fileID: 0}
+  text: {fileID: 4131544651284534541}
+  panelAnim: {fileID: 4131544650509758906}
   gameManager: {fileID: 0}
   menuManager: {fileID: 0}
 --- !u!1 &4131544650809735310
