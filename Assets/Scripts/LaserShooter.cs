@@ -36,6 +36,12 @@ public class LaserShooter : ShooterBase
             spriteRenderer.sprite = sprites[0];
         }
     }
+
+    protected new void CallWhenFrozen()
+    {
+        Debug.Log("LASR");
+        StopAllCoroutines();
+    }
     
     
     public override void Shoot()

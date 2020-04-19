@@ -30,8 +30,11 @@ public abstract class ShooterBase : MonoBehaviour
 
     public abstract void Shoot();
 
+    protected void CallWhenFrozen(){}
+    
     public void ToggleFreeze(bool value)
     {
         frozen = value;
+        CallWhenFrozen();
     }
 }
