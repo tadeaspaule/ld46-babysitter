@@ -65,8 +65,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: press S to continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7db8563753740a240ba8d33a41925d4f, type: 2}
-  m_sharedMaterial: {fileID: -8272724251957966548, guid: 7db8563753740a240ba8d33a41925d4f,
+  m_fontAsset: {fileID: 11400000, guid: f822a22c122596d4fa1f85c441f22220, type: 2}
+  m_sharedMaterial: {fileID: -3404625895305089561, guid: f822a22c122596d4fa1f85c441f22220,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -421,8 +421,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Damn! Dad left the security system on!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7db8563753740a240ba8d33a41925d4f, type: 2}
-  m_sharedMaterial: {fileID: -8272724251957966548, guid: 7db8563753740a240ba8d33a41925d4f,
+  m_fontAsset: {fileID: 11400000, guid: f822a22c122596d4fa1f85c441f22220, type: 2}
+  m_sharedMaterial: {fileID: -3404625895305089561, guid: f822a22c122596d4fa1f85c441f22220,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

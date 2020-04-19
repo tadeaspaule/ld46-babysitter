@@ -7,7 +7,7 @@ public class Carrier : MonoBehaviour
     public GameManager gameManager;
     public SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
-    float timer = 0f;
+    public float timer = 0f;
     float animAtTime = 3f;
     bool animating = false;
     float animDelay = 0.1f;

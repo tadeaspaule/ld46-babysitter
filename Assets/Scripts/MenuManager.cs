@@ -36,7 +36,7 @@ public class MenuManager : MonoBehaviour
             "*phone ringing*",
             "Yes, Son?",
             "Hello Father, I'm here to drop off Susan.",
-            "*crashing noise*",
+            "*crash*",
             "Oh, excellent! You have my Suzie-pie... Come on up!",
             "*sigh* Yes, Father."
         },

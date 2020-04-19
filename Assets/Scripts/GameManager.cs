@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
 
     #region Level stuff
 
+    public Transform levelTransBuilding;
+    public TextMeshProUGUI levelText;
     public Animation levelTransitionAnim;
     public AnimationClip levelTransitionClip;
     public Animation openDoorsAnim;
@@ -76,8 +78,11 @@ public class GameManager : MonoBehaviour
         stairsUp.enabled = false;
         levelTransitionAnim.Play("levelTransition");
         player.ToggleFreezeMovement(true);
-        StartCoroutine(DelayedEnableLevelTransitionOuter());
-        // DelayedCompleteLevelSetup(levelTransitionClip.averageDuration);
+        // StartCoroutine(DelayedEnableLevelTransitionOuter());
+        if (level < levels.Length) levelText.text = $"level {level+1}";
+        else levelText.text = "boss";
+        levelTransBuilding.position = new Vector3(levelTransBuilding.position.x,levelTransBuilding.position.y-40f,levelTransBuilding.position.z);
+        DelayedCompleteLevelSetup(levelTransitionClip.averageDuration);
     }
 
     IEnumerator DelayedEnableLevelTransitionOuter()
