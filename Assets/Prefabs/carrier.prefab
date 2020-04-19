@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   rb: {fileID: 248316193660111485}
+  spriteRenderer: {fileID: 248316193202115900}
   levitatedObject: {fileID: 0}
 --- !u!61 &248316193202115903
 BoxCollider2D:
@@ -247,6 +248,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  spriteRenderer: {fileID: 248316193660111482}
+  sprites:
+  - {fileID: -8849439120962317366, guid: 1241da0fad2d76049b8a72aede325191, type: 3}
+  - {fileID: 6636935119176241294, guid: 1241da0fad2d76049b8a72aede325191, type: 3}
+  - {fileID: -2474377180254296551, guid: 1241da0fad2d76049b8a72aede325191, type: 3}
+  - {fileID: -6810622056377658651, guid: 1241da0fad2d76049b8a72aede325191, type: 3}
+  - {fileID: 3685079396542880335, guid: 1241da0fad2d76049b8a72aede325191, type: 3}
+  - {fileID: 4264539570635504328, guid: 1241da0fad2d76049b8a72aede325191, type: 3}
+  - {fileID: 3914617694035943891, guid: 1241da0fad2d76049b8a72aede325191, type: 3}
+  - {fileID: 5560683798903645211, guid: 1241da0fad2d76049b8a72aede325191, type: 3}
 --- !u!50 &248316193660111485
 Rigidbody2D:
   serializedVersion: 4

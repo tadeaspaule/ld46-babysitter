@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public GameManager gameManager;
     public Rigidbody2D rb;
+    public SpriteRenderer spriteRenderer;
     float moveSpeed = 7f;
     bool freezeMovement = false;
 
@@ -13,6 +14,11 @@ public class Player : MonoBehaviour
     float floatSpeed = 2f;
     float floatHeight = 0.08f;
     float floatBaseY = 0.2f;
+
+    float alpha = 0.7f;
+    float alphaRadians = 0f;
+    float alphaSpeed = 1f;
+    float alphaImpact = 0.2f;
 
     float levitateSpeed = 15f;
     public Rigidbody2D levitatedObject;
@@ -24,6 +30,11 @@ public class Player : MonoBehaviour
         floatRadians += Time.deltaTime * floatSpeed;
         if (floatRadians > Mathf.PI * 2) floatRadians -= Mathf.PI * 2;
         transform.localPosition = new Vector3(transform.localPosition.x,floatBaseY + Mathf.Sin(floatRadians)*floatHeight,transform.localPosition.z);
+
+        // alpha change
+        alphaRadians += Time.deltaTime * floatSpeed;
+        if (alphaRadians > Mathf.PI * 2) alphaRadians -= Mathf.PI * 2;        
+        spriteRenderer.color = new Color(1f,1f,1f,alpha + Mathf.Sin(alphaRadians)*alphaImpact);
 
         if (freezeMovement) return;
         // movement
