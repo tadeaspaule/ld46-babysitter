@@ -32,8 +32,16 @@ public class MenuManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1f);
         textPanel.SetTextQueue(new string[]{
-            "this is the first long text",
-            "this is the second and it's different look d look"
+            "*phone ringing*",
+            "*phone ringing*",
+            "Yes, Son?",
+            "Hello Father, I'm here to drop off Susan.",
+            "*crashing noise*",
+            "Oh, excellent! You have my Suzie-pie... Come on up!",
+            "*sigh* Yes, Father."
+        },
+        new string[]{
+            "phone","phone","phone-portrait","player","phone-portrait","phone-portrait","player"
         });
     }
 
