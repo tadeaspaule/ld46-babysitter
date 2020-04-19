@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     public Animation openDoorsAnim;
     public Animation stairsDownAnim;
     public GameObject finalFloorStuff;
+    public SpriteRenderer dadSR;
+    public Sprite dadSecondSprite;
     int level = 0;
     float levelTimer = 0f;
     float levelTimerMax = 5f;
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
     public Transform partyHolder;
     Vector3 partyMoveVector = new Vector3(8f,6f,0f);
     bool duringLevelTransition = false;
+    bool invulnerable = false;
 
     
 
@@ -66,6 +69,7 @@ public class GameManager : MonoBehaviour
 
     public void EnterLevel()
     {
+        invulnerable = true;
         bulletHolder.FreezeAll();
         shooterHolder.ToggleFreezeAll(true);
         level++;
@@ -137,6 +141,8 @@ public class GameManager : MonoBehaviour
         player.ToggleFreezeMovement(false);
         playingLevel = true;
         levelTimer = 0f;
+        invulnerable = false;
+        stairsUp.enabled = false;
         stairsDownAnim.Play("closeStairsDown");
         // activate enemies
         shooterHolder.ToggleFreezeAll(false);
@@ -171,19 +177,7 @@ public class GameManager : MonoBehaviour
         }
         else if (level == levels.Length) {
             // end of game
-            ShowLevelIntroFirst(new string[]{
-                "Hello Son.",
-                "Father.",
-                "Fada? Dada? ... Dada!",
-                "There you are, my Suzie-pie! Dada is here!",
-                "Dada!",
-                "Hehehe... Ahem. Thank you Son.",
-                "No problem. Now, I really have to get back to my spellbooks...",
-                "Of course, of course! Then I'll see you again on Imp's Eve.",
-                "See you Dad.",
-                "Great. Now come here darling, you little troublemaker..."
-            }, new string[]{"dad","player","baby","dad-excited","baby","dad-excited","player","dad","player","dad-excited"});
-
+            StartCoroutine(DelayedTopFloorStuff());
         }
     }
 
@@ -192,6 +186,24 @@ public class GameManager : MonoBehaviour
         string[] portraitQueue = new string[textQueue.Length];
         for (int i = 0; i < textQueue.Length; i++) portraitQueue[i] = "player";
         ShowLevelIntroFirst(textQueue,portraitQueue);
+    }
+
+    IEnumerator DelayedTopFloorStuff()
+    {
+        yield return new WaitForSeconds(0.5f);
+        ShowLevelIntroFirst(new string[]{
+            "Hello Son.",
+            "Father.",
+            "Fada? Dada? ... Dada!",
+            "There you are, my Suzie-pie! Dada is here!",
+            "Dada!",
+            "Hehehe... Ahem. Thank you Son.",
+            "No problem. Now, I really have to get back to my spellbooks...",
+            "Of course, of course! Then I'll see you again on Imp's Eve.",
+            "See you Dad.",
+            "Great. Now come here darling, you little troublemaker..."
+        }, new string[]{"dad","player","baby","dad-excited","baby","dad-excited","player","dad","player","dad-excited"});
+        dadSR.sprite = dadSecondSprite;
     }
 
     void ShowLevelIntroFirst(string[] textQueue, string[] portraitQueue)
@@ -244,6 +256,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        if (invulnerable) return;
+        if (duringLevelTransition) return;
         Debug.Log("over");
         shooterHolder.ToggleFreezeAll(true);
         bulletHolder.FreezeAll();

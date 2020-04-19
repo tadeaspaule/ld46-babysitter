@@ -2836,7 +2836,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 08646727f429af94b8844e961a28fa0d, type: 3}
+  m_Sprite: {fileID: -4969197790117087722, guid: 08646727f429af94b8844e961a28fa0d,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3046,6 +3047,9 @@ MonoBehaviour:
   openDoorsAnim: {fileID: 681096044}
   stairsDownAnim: {fileID: 133221667}
   finalFloorStuff: {fileID: 286363923}
+  dadSR: {fileID: 1413563975}
+  dadSecondSprite: {fileID: -7401816585515544845, guid: 08646727f429af94b8844e961a28fa0d,
+    type: 3}
   levelTransitionOuter: {fileID: 932772080}
   partyHolder: {fileID: 1176637283}
   levels:
