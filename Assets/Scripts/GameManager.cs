@@ -145,22 +145,29 @@ public class GameManager : MonoBehaviour
             // intro sequence
             ShowLevelIntroFirst(new string[]{
                 "Of course. Dad left the security system on again...",
-                "Good thing I have LEVITATRON"
+                "Good thing I can command the Levitron!"
             });
         }
         else if (level == 3) {
             // first dynamic shooter
             ShowLevelIntroFirst(new string[]{
-                "That thing can track my movement"
+                "Is that thing... looking at me?"
             });
         }
         else if (level == 6) {
             // first laser shooter
             ShowLevelIntroFirst(new string[]{
-                "Typical dad, putting up lasers. Of course, I can just wait for the heat warning",
+                "Typical dad, putting up lasers.",
+                "Of course, I can just wait for the heat warning.",
                 "D... Da? Dada? ... Dada!",
                 "Yes, yes, we're going to Dada."
-            }, new string[]{"player","baby","player"});
+            }, new string[]{"player","player","baby","player"});
+        }
+        else if (level == 8) {
+            // first dynamic laser
+            ShowLevelIntroFirst(new string[]{
+                "That laser is different from the others..."
+            });
         }
         else if (level == levels.Length) {
             // end of game

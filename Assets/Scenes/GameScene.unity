@@ -2659,7 +2659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3055,9 +3055,16 @@ MonoBehaviour:
   - {fileID: 1972380295702481781, guid: 54f5a56c823e0104faf080adbb0df548, type: 3}
   - {fileID: 2136265772841609264, guid: 0a813b293d57c3e4a821b34f101739c0, type: 3}
   - {fileID: 1378627422035086896, guid: 5f530c823bad7064cb7ccbf1fa4ac9f2, type: 3}
+  - {fileID: 5076523232891220900, guid: c8c87946df4f0f841bad9c06323e5806, type: 3}
+  - {fileID: 6533465828271356895, guid: 3695890f2599a3b4aa56aa1d9d136b86, type: 3}
   - {fileID: 6020001640306272303, guid: ed272475717e8a644bab057aee6cc00a, type: 3}
   - {fileID: 7746051146433141440, guid: 5ebaf70da3ad810479cd0de6c826e533, type: 3}
   - {fileID: 6240337268810635027, guid: 8f1e01715db1c82448298479396e3cc8, type: 3}
+  - {fileID: 5161305597104449541, guid: 1c466900a0a5561488cded3ad34aacbd, type: 3}
+  - {fileID: 4963665709589885364, guid: 23a7932ecdfe9cf4f86a3e9c6c5dc909, type: 3}
+  - {fileID: 3935959060186526612, guid: deef89a39d7925c4b9c9749ba029bc1e, type: 3}
+  - {fileID: 7696622253988728390, guid: 4f4ab973493828245b3082bc58d83b00, type: 3}
+  - {fileID: 2627249006335169742, guid: f1e6dd59731fe6d49818ebad1a658f95, type: 3}
   shooterHolder: {fileID: 616979265}
   bulletHolder: {fileID: 316298439}
   canvasAnim: {fileID: 239482290}

@@ -12,7 +12,7 @@ public class LevitatedWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        degs += (Time.deltaTime * rotateSpeed) + (rb.velocity.magnitude / 15f) * 20f;
+        degs += (Time.deltaTime * rotateSpeed) + (Mathf.Min(rb.velocity.magnitude,15f) / 15f) * 3f;
         transform.rotation = Quaternion.Euler(0f,0f,degs);
     }
 }
