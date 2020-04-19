@@ -23,11 +23,11 @@ public class LaserShooter : ShooterBase
     {
         BaseUpdate();
         float dif = Mathf.Abs(target.transform.position.x - transform.position.x);
-        if (target.transform.position.x > transform.position.x && dif > 2f) {
+        if (target.transform.position.x > transform.position.x && dif > 1.5f) {
             // look right
             spriteRenderer.sprite = sprites[1];
         }
-        else if (target.transform.position.x < transform.position.x && dif > 2f) {
+        else if (target.transform.position.x < transform.position.x && dif > 1.5f) {
             // look left
             spriteRenderer.sprite = sprites[2];
         }

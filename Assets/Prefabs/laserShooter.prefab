@@ -204,6 +204,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1710896790707081547, guid: 6b74c294ede53e2418d32747a0f9d7ab,
         type: 3}
+    - target: {fileID: 139518951376235450, guid: b698d42b2a6606d4c8e5f0635745b6ee,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2040496919
+      objectReference: {fileID: 0}
+    - target: {fileID: 139518951376235450, guid: b698d42b2a6606d4c8e5f0635745b6ee,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 139518951376235450, guid: b698d42b2a6606d4c8e5f0635745b6ee,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2988456416687027690, guid: b698d42b2a6606d4c8e5f0635745b6ee, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b698d42b2a6606d4c8e5f0635745b6ee, type: 3}

@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour
         }
         else {
             GameObject currentLevel = Instantiate(levels[level],Vector3.zero,Quaternion.identity);
+            Destroy(shooterHolder.gameObject);
             shooterHolder = currentLevel.GetComponent<ShooterHolder>();
             shooterHolder.ToggleFreezeAll(true);
         }
@@ -144,7 +145,7 @@ public class GameManager : MonoBehaviour
             // intro sequence
             ShowLevelIntroFirst(new string[]{
                 "Of course. Dad left the security system on again...",
-                "Good thing I have LEVITATRON 9000"
+                "Good thing I have LEVITATRON"
             });
         }
         else if (level == 3) {

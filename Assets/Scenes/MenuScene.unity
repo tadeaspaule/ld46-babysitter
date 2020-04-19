@@ -758,8 +758,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: by Tadeas Paule
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7db8563753740a240ba8d33a41925d4f, type: 2}
+  m_sharedMaterial: {fileID: -8272724251957966548, guid: 7db8563753740a240ba8d33a41925d4f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1113,8 +1114,9 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7db8563753740a240ba8d33a41925d4f, type: 2}
+  m_sharedMaterial: {fileID: -8272724251957966548, guid: 7db8563753740a240ba8d33a41925d4f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1511,7 +1513,7 @@ PrefabInstance:
     - target: {fileID: 4131544650509758905, guid: 7c7e670e39f20b84e99335ae75885920,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4131544650509758905, guid: 7c7e670e39f20b84e99335ae75885920,
         type: 3}
