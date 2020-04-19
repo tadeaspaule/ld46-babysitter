@@ -18,6 +18,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (duringLevelTransition) {
+            partyHolder.position += partyMoveVector * Time.deltaTime;
+            if (partyHolder.position.x > 10f) {
+                // they are up the stairs, end animation
+                levelTransitionAnim.Play("levelTransition");
+                DelayedCompleteLevelSetup(levelTransitionClip.averageDuration);
+                StartCoroutine(DelayedDisableLevelTransitionOuter());
+                duringLevelTransition = false;
+            } 
+            return;
+        }
         if (playingLevel) levelTimer += Time.deltaTime;
         if (playingLevel && levelTimer > levelTimerMax) {
             playingLevel = false;
@@ -37,6 +48,13 @@ public class GameManager : MonoBehaviour
     float levelTimerMax = 5f;
     bool playingLevel;
 
+    public GameObject levelTransitionOuter;
+    public Transform partyHolder;
+    Vector3 partyMoveVector = new Vector3(8f,6f,0f);
+    bool duringLevelTransition = false;
+
+    
+
     public GameObject[] levels;
 
     void OpensStairsUp()
@@ -52,7 +70,22 @@ public class GameManager : MonoBehaviour
         stairsUp.enabled = false;
         levelTransitionAnim.Play("levelTransition");
         player.ToggleFreezeMovement(true);
-        DelayedCompleteLevelSetup(levelTransitionClip.averageDuration);
+        StartCoroutine(DelayedEnableLevelTransitionOuter());
+        // DelayedCompleteLevelSetup(levelTransitionClip.averageDuration);
+    }
+
+    IEnumerator DelayedEnableLevelTransitionOuter()
+    {
+        yield return new WaitForSeconds(levelTransitionClip.averageDuration / 2);
+        levelTransitionOuter.SetActive(true);
+        duringLevelTransition = true;
+    }
+
+    IEnumerator DelayedDisableLevelTransitionOuter()
+    {
+        yield return new WaitForSeconds(levelTransitionClip.averageDuration / 2);
+        partyHolder.position = new Vector3(-12f,-9.65f,0f);
+        levelTransitionOuter.SetActive(false);
     }
 
     void DelayedCompleteLevelSetup(float delay)
@@ -178,8 +211,9 @@ public class GameManager : MonoBehaviour
     {
         gameOverPanel.SetActive(false);
         // StartGame();
-        level--;
-        EnterLevel();
+        // level--;
+        // EnterLevel();
+        CompleteLevelSetup();
     }
     
     // called at the very start, or when clicking "try again"
@@ -187,7 +221,7 @@ public class GameManager : MonoBehaviour
     {
         shooterHolder.DestroyAll();
         bulletHolder.DestroyAll();
-        level = 8;
+        level = 0;
         CompleteLevelSetup();
     }
 

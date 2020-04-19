@@ -10,11 +10,6 @@ public class Player : MonoBehaviour
     float moveSpeed = 7f;
     bool freezeMovement = false;
 
-    float floatRadians = 0f;
-    float floatSpeed = 2f;
-    float floatHeight = 0.08f;
-    float floatBaseY = 0.2f;
-
     float alpha = 0.7f;
     float alphaRadians = 0f;
     float alphaSpeed = 1f;
@@ -26,13 +21,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // floating
-        floatRadians += Time.deltaTime * floatSpeed;
-        if (floatRadians > Mathf.PI * 2) floatRadians -= Mathf.PI * 2;
-        transform.localPosition = new Vector3(transform.localPosition.x,floatBaseY + Mathf.Sin(floatRadians)*floatHeight,transform.localPosition.z);
-
         // alpha change
-        alphaRadians += Time.deltaTime * floatSpeed;
+        alphaRadians += Time.deltaTime * alphaSpeed;
         if (alphaRadians > Mathf.PI * 2) alphaRadians -= Mathf.PI * 2;        
         spriteRenderer.color = new Color(1f,1f,1f,alpha + Mathf.Sin(alphaRadians)*alphaImpact);
 

@@ -38,14 +38,17 @@ public class TextPanel : MonoBehaviour
     IEnumerator WriteTextChar()
     {
         yield return new WaitForSeconds(charDelay);
-        text.text =textQueue[index].Substring(0,currentTextIndex);
-        currentTextIndex++;
-        if (currentTextIndex <= textQueue[index].Length) {
-            StartCoroutine(WriteTextChar());
+        if (index < textQueue.Length) {
+            text.text = textQueue[index].Substring(0,currentTextIndex);
+            currentTextIndex++;
+            if (currentTextIndex <= textQueue[index].Length) {
+                StartCoroutine(WriteTextChar());
+            }
+            else {
+                writingText = false;
+            }
         }
-        else {
-            writingText = false;
-        }
+        else writingText = false;        
     }
 
     public void SetTextQueue(string[] queue, string[] portraits)
