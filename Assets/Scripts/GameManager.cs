@@ -224,7 +224,7 @@ public class GameManager : MonoBehaviour
     {
         shooterHolder.DestroyAll();
         bulletHolder.DestroyAll();
-        level = 0;
+        level = 8;
         CompleteLevelSetup();
     }
 
