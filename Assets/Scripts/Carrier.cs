@@ -45,9 +45,6 @@ public class Carrier : MonoBehaviour
         if (other.gameObject.name.Equals("stairs-up")) {
             gameManager.EnterLevel();
         }
-        else if (other.gameObject.name.Equals("officeDoors")) {
-            FindObjectOfType<MenuManager>().EnteredOffice();
-        }
         else if (other.gameObject.tag.Equals("bullet")) {
             gameManager.GameOver();
         }
