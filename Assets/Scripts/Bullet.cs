@@ -22,7 +22,10 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag.Equals("playerbullet")) {
+        if (other.gameObject.tag.Equals("wallground")) {
+            DestroyBullet();
+        }
+        else if (other.gameObject.tag.Equals("playerbullet")) {
             DestroyBullet();
         }
         else if (other.gameObject.name.Equals("carrier")) {

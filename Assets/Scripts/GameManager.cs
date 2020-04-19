@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     {
         if (duringLevelTransition) {
             partyHolder.position += partyMoveVector * Time.deltaTime;
-            if (partyHolder.position.x > 10f) {
+            if (partyHolder.position.x > 12f) {
                 // they are up the stairs, end animation
                 levelTransitionAnim.Play("levelTransition");
                 DelayedCompleteLevelSetup(levelTransitionClip.averageDuration);
@@ -66,6 +66,8 @@ public class GameManager : MonoBehaviour
 
     public void EnterLevel()
     {
+        bulletHolder.FreezeAll();
+        shooterHolder.ToggleFreezeAll(true);
         level++;
         stairsUp.enabled = false;
         levelTransitionAnim.Play("levelTransition");
@@ -78,6 +80,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(levelTransitionClip.averageDuration / 2);
         levelTransitionOuter.SetActive(true);
+        partyHolder.position = new Vector3(-12f,-9.65f,0f);
         duringLevelTransition = true;
     }
 
@@ -102,12 +105,12 @@ public class GameManager : MonoBehaviour
 
     void SetupLevel()
     {
-        carrier.transform.position = new Vector3(-5f,-5f,0f);
-        player.Reset();
-        openDoorsAnim.Play("resetDoors");
         // reset enemies
         shooterHolder.DestroyAll();
         bulletHolder.DestroyAll();
+        carrier.transform.position = new Vector3(-5f,-5f,0f);
+        player.Reset();
+        openDoorsAnim.Play("resetDoors");
         if (level >= levels.Length) {
             // on final floor with daddy, just end of game stuff
             stairsUp.gameObject.SetActive(false);
@@ -131,7 +134,6 @@ public class GameManager : MonoBehaviour
     void AfterLevelTransition()
     {
         player.ToggleFreezeMovement(false);
-        shooterHolder.ToggleFreezeAll(false);
         playingLevel = true;
         levelTimer = 0f;
         stairsDownAnim.Play("closeStairsDown");
