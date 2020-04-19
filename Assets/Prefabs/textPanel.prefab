@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  m_Color: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -277,6 +277,12 @@ MonoBehaviour:
     portrait: {fileID: 21300000, guid: ed6666ac44b055f4097e172ccc809c59, type: 3}
   - name: phone-portrait
     portrait: {fileID: 21300000, guid: b6d38bb22f6641e4bacd95b0a4f96e5e, type: 3}
+  - name: dad
+    portrait: {fileID: -8094768131790405031, guid: 1168f1717d289d643b0d3b76a0da8663,
+      type: 3}
+  - name: dad-excited
+    portrait: {fileID: -6678449357483429176, guid: 1168f1717d289d643b0d3b76a0da8663,
+      type: 3}
 --- !u!1 &4131544650809735310
 GameObject:
   m_ObjectHideFlags: 0

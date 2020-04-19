@@ -165,10 +165,17 @@ public class GameManager : MonoBehaviour
         else if (level == levels.Length) {
             // end of game
             ShowLevelIntroFirst(new string[]{
-                "dad zone line 1",
-                "D... Da? Dada? ... Dada!",
-                "yesyes"
-            }, new string[]{"player","baby","player"});
+                "Hello Son.",
+                "Father.",
+                "Fada? Dada? ... Dada!",
+                "There you are, my Suzie-pie! Dada is here!",
+                "Dada!",
+                "Hehehe... Ahem. Thank you Son.",
+                "No problem. Now, I really have to get back to my spellbooks...",
+                "Of course, of course! Then I'll see you again on Imp's Eve.",
+                "See you Dad.",
+                "Great. Now come here darling, you little troublemaker..."
+            }, new string[]{"dad","player","baby","dad-excited","baby","dad-excited","player","dad","player","dad-excited"});
 
         }
     }
@@ -224,7 +231,7 @@ public class GameManager : MonoBehaviour
     {
         shooterHolder.DestroyAll();
         bulletHolder.DestroyAll();
-        level = 8;
+        level = 9;
         CompleteLevelSetup();
     }
 
