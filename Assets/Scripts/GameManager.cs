@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     public AnimationClip levelTransitionClip;
     public Animation openDoorsAnim;
     public Animation stairsDownAnim;
-    public GameObject dad;
+    public GameObject finalFloorStuff;
     int level = 0;
     float levelTimer = 0f;
     float levelTimerMax = 5f;
@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
         if (level >= levels.Length) {
             // on final floor with daddy, just end of game stuff
             stairsUp.gameObject.SetActive(false);
-            dad.SetActive(true);
+            finalFloorStuff.SetActive(true);
         }
         else {
             GameObject currentLevel = Instantiate(levels[level],Vector3.zero,Quaternion.identity);
